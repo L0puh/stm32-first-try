@@ -8,25 +8,27 @@ static void delay(volatile uint32_t count)
     }
 }
 
-int main(void)
-{
-    /* Enable GPIOC clock */
+static void setup_gpio(void){
     rcc_periph_clock_enable(RCC_GPIOC);
-
-    /* PC13: LED (active LOW on Blue Pill) */
     gpio_set_mode(GPIOC,
                   GPIO_MODE_OUTPUT_2_MHZ,
                   GPIO_CNF_OUTPUT_PUSHPULL,
                   GPIO13);
 
-    /* LED OFF initially */
     gpio_set(GPIOC, GPIO13);
 
+}
+
+int main(void)
+{
+   setup_gpio();
+
     while (1) {
-        gpio_clear(GPIOC, GPIO13);  /* LED ON */
+        gpio_clear(GPIOC, GPIO13);  
         delay(1000000);
 
-        gpio_set(GPIOC, GPIO13);    /* LED OFF */
+
+        gpio_set(GPIOC, GPIO13);    
         delay(1000000);
     }
 }

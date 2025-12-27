@@ -2,7 +2,7 @@ PROJECT = blinker
 BUILD_DIR = build
 
 LIBOPENCM3 = ../libs/libopencm3
-LINKER_SCRIPT = ../libs/stm32f103x8.ld
+LINKER_SCRIPT = ../libs/stm32f103c8t6.ld
 
 PREFIX = arm-none-eabi-
 CC = $(PREFIX)gcc
